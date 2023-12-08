@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Gestion des salariés</title>
   <link rel="stylesheet" href="/static/bootstrap.min.css">
   <link rel="stylesheet" href="/static/font-awesome.css">
@@ -47,20 +47,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Jeanne Dupond</td>
-          <td><a href="/salaries/aide/2" class="btn btn-primary ember-view">Détail</a></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Robert Martin</td>
-          <td><a href="/salaries/aide/3" class="btn btn-primary ember-view">Détail</a></td>
+        <!-- Utiliser Thymeleaf pour itérer sur la liste des salariés -->
+        <tr th:each="salarie : ${salaries}">
+          <th scope="row" th:text="${salarie.id}"></th>
+          <td th:text="${salarie.nom}"></td>
+          <td>
+            <!-- Utiliser Thymeleaf pour créer le lien dynamique vers les détails de chaque salarié -->
+            <a th:href="@{/salaries/aide/{id}(id=${salarie.id})}" class="btn btn-primary">Détail</a>
+          </td>
         </tr>
         </tbody>
       </table>
       <div class="row">
-        <div class="col-lg-6"><p>Affichage des salariés 1 à 10 sur un total de <span>11</span></p>
+        <div class="col-lg-6">
+          <p>Affichage des salariés 1 à 10 sur un total de <span>11</span></p>
         </div>
         <div class="col-lg-6">
           <ul class="pagination">
@@ -69,10 +69,13 @@
             </li>
             <li><a href="#" class="page-link">Page 1</a></li>
             <li class="page-item ">
-              <a class="page-link" href="/salaries?page=1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">»</a></li>
-          </ul></div>
+              <a class="page-link" href="/salaries?page=1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">»</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div></body></html>
+</body>
+</html>
