@@ -53,7 +53,7 @@
           <td th:text="${salarie.nom}"></td>
           <td>
             <!-- Utiliser Thymeleaf pour créer le lien dynamique vers les détails de chaque salarié -->
-            <a th:href="@{/salaries/aide/{id}(id=${salarie.id})}" class="btn btn-primary">Détail</a>
+            <a th:href="@{/salaries/{id}(id=${salarie.id})}" class="btn btn-primary">Détail</a>
           </td>
         </tr>
         </tbody>
