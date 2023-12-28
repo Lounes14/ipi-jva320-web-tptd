@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th=http://www.w3.org/1999/xhtml>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <title>Gestion des salariés</title>
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet" href="./static/font-awesome.css">
 </head>
 <body>
-
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="http://localhost:8080/">Gestion des salariés</a>
+        <a class="navbar-brand" href=http://localhost:8080/>Gestion des salariés</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary">26</span></a></li>
+                <li><a href=http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC class="nav-link">Liste des salariés <span class="badge badge-primary"><span th:text="${nombreSalaries}"></span></span></a></li>
             </ul>
-
-            <form class="form-inline my-2 my-lg-0" role="search" action="http://localhost:8080/salaries" method="GET">
+            <form class="form-inline my-2 my-lg-0" role="search" action=http://localhost:8080/salaries method="GET">
                 <div class="form-group form-inline">
                     <input name="nom" class="form-control" placeholder="Rechercher un nom" type="text">
                 </div>
@@ -29,34 +25,25 @@
         </div>
     </nav>
 </div>
-
 <div class="container">
     <div th:text="#{msg.salarie}"></div><!-- TODO better messages example -->
-
     <h2>Détail du salarié</h2>
-
     <form id="saveForm"  method="post" class="row">
-
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="id">ID</label>
                 <input type="text" class="form-control" name="id" id="id" disabled="true">
-
                 <label class="form-control-label" for="nom">Nom</label>
                 <input type="text" class="form-control" name="nom" id="nom">
-
                 <label class="form-control-label" for="nom">moisEnCours</label>
                 <input type="date"  class="form-control" name="moisEnCours"
                        id="moisEnCours">
-
                 <label class="form-control-label" for="nom">moisDebutContrat</label>
                 <input type="date"  class="form-control" name="moisDebutContrat" id="moisDebutContrat">
             </div>
         </div>
-
         <div class="col-lg-6">
             <div class="form-group">
-
                 <div>
                     <label class="form-control-label" for="nom">joursTravaillesAnneeN</label>
                     <div class="input-group">
@@ -66,7 +53,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <label class="form-control-label" for="nom">congesPayesAcquisAnneeN</label>
                     <div class="input-group">
@@ -78,8 +64,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="col-lg-6">
             <div>
                 <label class="form-control-label" for="nom">joursTravaillesAnneeNMoins1</label>
@@ -90,7 +74,6 @@
                     </div>
                 </div>
             </div>
-
             <div>
                 <label class="form-control-label" for="nom">congesPayesAcquisAnneeNMoins1</label>
                 <div class="input-group">
@@ -100,7 +83,6 @@
                     </div>
                 </div>
             </div>
-
             <div>
                 <label class="form-control-label" for="nom">congesPayesPrisAnneeNMoins1</label>
                 <div class="input-group">
@@ -111,31 +93,17 @@
                 </div>
             </div>
         </div>
-
-
     </form>
-
     <div class="row">
         <div class="col-lg-6">
-            <ul class="list-group list-unstyled">
-                <li class="alert alert-danger" role="alert">Erreur dans un champ !</li>
-            </ul>
+            <ul class="list-group list-unstyled"></ul>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-lg-6">
             <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer">
-            <a href="/salaries/10/delete" class="btn btn-danger">Supprimer</a>
+            <a href="/salaries/{id}/delete" class="btn btn-danger">Supprimer</a>
         </div>
     </div>
-
-    <div class="row">
-        <table>
-            <tr><td class="alert alert-danger" role="alert">Erreur de type de données !</td></tr>
-        </table>
-        <div>Erreur globale spécifique !</div>
-    </div>
 </div>
-
-
 </body></html>

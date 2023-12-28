@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th=http://www.thymeleaf.org>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Gestion des salariés</title>
@@ -7,20 +7,17 @@
   <link rel="stylesheet" href="/static/font-awesome.css">
 </head>
 <body>
-
 <div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="http://localhost:8080/">Gestion des salariés</a>
+    <a class="navbar-brand" href=http://localhost:8080/>Gestion des salariés</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary"></span></a></li>
+        <li><a href=http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC class="nav-link">Liste des salariés <span class="badge badge-primary"><span th:text="${nombreSalaries}"></span></span></a></li>
       </ul>
-
-      <form class="form-inline my-2 my-lg-0" role="search" action="http://localhost:8080/salaries" method="GET">
+      <form class="form-inline my-2 my-lg-0" role="search" action=http://localhost:8080/salaries method="GET">
         <div class="form-group">
           <input name="nom" class="form-control" placeholder="Rechercher un nom" type="text">
         </div>
@@ -68,14 +65,11 @@
               <a class="page-link" href="/salaries?page=-1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">«</a>
             </li>
             <li><a href="#" class="page-link">Page 1</a></li>
-            <li class="page-item ">
-              <a class="page-link" href="/salaries?page=1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">»</a>
-            </li>
+            <li class="page-item "></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-</body>
-</html>
+</body></html>

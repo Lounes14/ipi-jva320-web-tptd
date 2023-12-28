@@ -37,6 +37,8 @@ public class ControllerIndex {
     @GetMapping("salaries/{id}")
     public String afficherDetailSalarie(@PathVariable long id, ModelMap modelMap) {
         SalarieAideADomicile salarie = salarieAideADomicileService.getSalarie(id);
+        Long countSalaries = salarieAideADomicileService.countSalaries();
+        modelMap.put("nombreSalaries", countSalaries);
         modelMap.put("salarie", salarie);
         return "detail_Salarie";
     }
@@ -44,6 +46,8 @@ public class ControllerIndex {
     @GetMapping("/salaries")
     public String afficherListeSalaries(ModelMap modelMap) {
         List<SalarieAideADomicile> salaries = salarieAideADomicileService.getSalaries();
+        Long countSalaries = salarieAideADomicileService.countSalaries();
+        modelMap.put("nombreSalaries", countSalaries);
         modelMap.put("salaries", salaries);
         return "list";
     }
@@ -59,15 +63,21 @@ public class ControllerIndex {
     }
     @GetMapping("salaries/aide/new")
     public String afficherFormulaireCreation(ModelMap modelMap) {
+        Long countSalaries = salarieAideADomicileService.countSalaries();
+        modelMap.put("nombreSalaries", countSalaries);
         return "new_Salarie";
 
     }
     @PostMapping("salaries/aide/new")
     public String sauvegarderSalarie(SalarieAideADomicile salarie) throws SalarieException {
-
         SalarieAideADomicile newSalarie = salarieAideADomicileService.creerSalarieAideADomicile(salarie);
         return "redirect:/salaries/" + newSalarie.getId();
+    }
+    @GetMapping("salaries/{id}/delete")
 
-
+    public String supprimerSalarie(@PathVariable Long id) throws SalarieException {
+        salarieAideADomicileService.deleteSalarieAideADomicile(id);
+        return "redirect:/salaries";
     }
 }
+

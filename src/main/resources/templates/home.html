@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <title>Aide à domicile RH - gestion des salariés</title>
     <link rel="stylesheet" href="./static/bootstrap.min.css">
     <link rel="stylesheet" href="./static/font-awesome.css">
 </head>
 <body>
-
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="http://localhost:8080/">Aide à domicile RH - gestion des salariés</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=id&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary"><span th:text="${nombreSalaries}"></span></span></a></li>
             </ul>
-
             <form class="form-inline my-2 my-lg-0" role="search" action="http://localhost:8080/salaries" method="GET">
                 <div class="form-group">
                     <input name="matricule" class="form-control" placeholder="Rechercher un nom" type="text">
@@ -29,7 +25,6 @@
         </div>
     </nav>
 </div>
-
 <div class="container mt-2">
     <div class="jumbotron">
         <h1>Bienvenue dans l'interface d'administration RH ! Nombres de salaries(<span th:text="${nombreSalaries}"></span> )</h1>
@@ -104,7 +99,6 @@
                     Faire le
                 </p>
             </li>
-
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">TP - Suppression d'un salarié</h4>
                 <p class="list-group-item-text">En allant à <a href="http://localhost:8080/salaries/1">http://localhost:8080/salaries/1</a> (page de détail du salarié d'id 1), il est possible de supprimer le salarié affiché lorsqu'on clique sur le bouton <em>Supprimer</em>. L'appel qui est effectué est <code>GET /salaries/1/delete</code> (NB. en API REST ce serait un PUT mais il s'agit de Controllers de pages web).</p>
@@ -117,7 +111,6 @@
                 <h4 class="list-group-item-heading">TP - Réutilisation de la barre de navigation par un fragment</h4>
                 <p class="list-group-item-text">Le HTML des pages fournies comporte des redites. Créer un template Thymeleaf common.html contenant un fragment qui mutualise le code HTML de la barre de navigation HTML entre au moins 2 pages.</p>
             </li>
-
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">BONUS TP - Utilisation pour les 2 d'un seul fragment qui est paramétré</h4>
                 <p class="list-group-item-text">Utiliser dans les 2 cas vus de fragments plutôt un seul fragment qui soit paramétré (faire une sauvegarde des pages à modifier d'abord dans u sous-dossier).</p>
@@ -125,6 +118,4 @@
         </ul>
     </div>
 </div>
-
-
 </body></html>
