@@ -79,5 +79,22 @@ public class ControllerIndex {
         salarieAideADomicileService.deleteSalarieAideADomicile(id);
         return "redirect:/salaries";
     }
+    @GetMapping("/recherche-salaries")
+    public String rechercherParNom(@RequestParam("nom") String nom, ModelMap modelMap) {
+        SalarieAideADomicile salarie = salarieAideADomicileService.rechercherParNom(nom);
+
+        if (salarie != null) {
+            // Salarié trouvé, afficher les détails
+            Long countSalaries = salarieAideADomicileService.countSalaries();
+            modelMap.put("nombreSalaries", countSalaries);
+            modelMap.put("salarie", salarie);
+            return "detail_Salarie";
+        } else {
+            // Aucun salarié trouvé, rediriger ou afficher une page d'erreur
+            return "redirect:/salaries"; // Rediriger vers la liste des salariés par exemple
+            // ou bien
+            // return "erreur"; // Créer une page d'erreur spécifique
+        }
+    }
 }
 

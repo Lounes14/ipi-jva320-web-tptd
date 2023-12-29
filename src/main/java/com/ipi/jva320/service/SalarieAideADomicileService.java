@@ -68,6 +68,12 @@ public class SalarieAideADomicileService {
     public Page<SalarieAideADomicile> getSalaries(Pageable pageable) {
         return salarieAideADomicileRepository.findAll(pageable);
     }
+    /**
+     * @recherche le salarie
+     */
+    public SalarieAideADomicile rechercherParNom(String nom) {
+        return salarieAideADomicileRepository.findByNom(nom);
+    }
 
     /**
      * @return le salarie
@@ -279,5 +285,6 @@ public class SalarieAideADomicileService {
 
         salarieAideADomicileRepository.save(salarieAideADomicile);
     }
+
 
 }

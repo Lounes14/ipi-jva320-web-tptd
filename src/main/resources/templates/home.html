@@ -16,9 +16,9 @@
             <ul class="navbar-nav mr-auto">
                 <li><a href="http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=id&amp;sortDirection=ASC" class="nav-link">Liste des salariés <span class="badge badge-primary"><span th:text="${nombreSalaries}"></span></span></a></li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" role="search" action="http://localhost:8080/salaries" method="GET">
+            <form class="form-inline my-2 my-lg-0" role="search" action="/recherche-salaries" method="GET">
                 <div class="form-group">
-                    <input name="matricule" class="form-control" placeholder="Rechercher un nom" type="text">
+                    <input name="nom" class="form-control" placeholder="Rechercher un nom" type="text">
                 </div>
                 <button type="submit" class="btn btn-outline-success ml-2 my-2 my-sm-0">Rechercher</button>
             </form>
