@@ -7,23 +7,7 @@
 </head>
 <body>
 <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href=http://localhost:8080/>Gestion des salariés</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li><a href=http://localhost:8080/salaries?page=0&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC class="nav-link">Liste des salariés <span class="badge badge-primary"><span th:text="${nombreSalaries}"></span></span></a></li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" role="search" action="/recherche-salaries" method="GET">
-                <div class="form-group">
-                    <input name="nom" class="form-control" placeholder="Rechercher un nom" type="text">
-                </div>
-                <button type="submit" class="btn btn-outline-success ml-2 my-2 my-sm-0">Rechercher</button>
-            </form>
-        </div>
-    </nav>
+    <div class="navigation" th:insert ="~{navigation :: nav}"></div>
 </div>
 <div class="container">
     <div th:text="#{msg.salarie}"></div><!-- TODO better messages example -->
@@ -97,6 +81,7 @@
     <div class="row mt-2">
         <div class="col-lg-6">
             <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer">
+            <a th:href="@{/salaries/{id}/modifier(id=${salarie.id})}" class="btn btn-warning">Modifier</a>
             <a th:href="@{/salaries/{id}/delete(id=${salarie.id})}" class="btn btn-danger">Supprimer</a>
         </div>
     </div>

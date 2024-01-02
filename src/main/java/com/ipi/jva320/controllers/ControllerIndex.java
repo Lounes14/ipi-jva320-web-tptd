@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -84,17 +81,28 @@ public class ControllerIndex {
         SalarieAideADomicile salarie = salarieAideADomicileService.rechercherParNom(nom);
 
         if (salarie != null) {
-            // Salarié trouvé, afficher les détails
             Long countSalaries = salarieAideADomicileService.countSalaries();
             modelMap.put("nombreSalaries", countSalaries);
             modelMap.put("salarie", salarie);
             return "detail_Salarie";
         } else {
-            // Aucun salarié trouvé, rediriger ou afficher une page d'erreur
-            return "redirect:/salaries"; // Rediriger vers la liste des salariés par exemple
-            // ou bien
-            // return "erreur"; // Créer une page d'erreur spécifique
+            modelMap.put("erreurMessage", "Aucun salarié trouvé avec le nom : " + nom);
+            return "erreur";
         }
+    }
+    @GetMapping("/salaries/{id}/modifier")
+    public String afficherPageModification(@PathVariable Long id, ModelMap modelMap) {
+        SalarieAideADomicile salarie = salarieAideADomicileService.getSalarie(id);
+        Long countSalaries = salarieAideADomicileService.countSalaries();
+        modelMap.put("nombreSalaries", countSalaries);
+        modelMap.put("salarie", salarie);
+        return "modifier_Salarie";
+    }
+
+    @PostMapping("/salaries/{id}/modifier")
+    public String soumettreModification(@ModelAttribute SalarieAideADomicile salarieModifie) throws SalarieException {
+        salarieAideADomicileService.updateSalarieAideADomicile(salarieModifie);
+        return "redirect:/salaries";
     }
 }
 
